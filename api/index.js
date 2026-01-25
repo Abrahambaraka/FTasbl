@@ -2,9 +2,11 @@ import express from "express";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient({
-    datasourceUrl: process.env.PRISMA_DATABASE_URL || process.env.DATABASE_URL,
-});
+const prisma = new PrismaClient(
+    process.env.PRISMA_DATABASE_URL
+        ? { accelerateUrl: process.env.PRISMA_DATABASE_URL }
+        : {}
+);
 const app = express();
 
 app.use(cors({ origin: true }));
