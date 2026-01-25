@@ -1,8 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { MapPin, CheckCircle2, Droplets, HeartPulse, Wallet, Users, ArrowUpRight, X, Calendar, Globe, Loader2 } from 'lucide-react';
-import { db } from '../firebase';
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 
 interface AchievementsProps {
   isFullPage?: boolean;

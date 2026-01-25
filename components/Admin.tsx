@@ -7,8 +7,7 @@ import {
     CheckCircle2, Info, Calendar
 } from 'lucide-react';
 
-import { storage } from '../firebase';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
 
 
 interface AdminProps {
@@ -88,23 +87,7 @@ const Admin: React.FC<AdminProps> = ({ onNavigate, onLogout }) => {
         }
     };
 
-    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (!file) return;
 
-        setUploading(true);
-        try {
-            const storageRef = ref(storage, `${activeTab}/${Date.now()}_${file.name}`);
-            await uploadBytes(storageRef, file);
-            const url = await getDownloadURL(storageRef);
-            setSelectedItem({ ...selectedItem, image: url });
-        } catch (error) {
-            console.error("Error uploading image:", error);
-            alert("Erreur lors de l'upload de l'image.");
-        } finally {
-            setUploading(false);
-        }
-    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -317,33 +300,19 @@ const Admin: React.FC<AdminProps> = ({ onNavigate, onLogout }) => {
 
                                         <div className="space-y-6">
                                             <div className="space-y-2">
-                                                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Média / Image</label>
-                                                <div className="relative group">
-                                                    <div className={`w-full h-56 bg-white border-2 border-dashed rounded-[32px] flex flex-col items-center justify-center transition-all overflow-hidden ${selectedItem?.image ? 'border-blue-200 bg-blue-50/10' : 'border-slate-200 bg-slate-50'}`}>
-                                                        {uploading ? (
-                                                            <div className="flex flex-col items-center">
-                                                                <Loader2 className="animate-spin text-blue-600 mb-3" size={32} />
-                                                                <span className="text-xs font-bold text-blue-600 animate-pulse uppercase tracking-tighter">Téléchargement...</span>
-                                                            </div>
-                                                        ) : selectedItem?.image ? (
-                                                            <div className="relative w-full h-full">
-                                                                <img src={selectedItem.image} className="w-full h-full object-cover" alt="Preview" />
-                                                                <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                                                    <p className="text-white text-xs font-bold uppercase tracking-widest">Changer l'image</p>
-                                                                </div>
-                                                            </div>
-                                                        ) : (
-                                                            <div className="text-center p-6 cursor-pointer">
-                                                                <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-300 group-hover:text-blue-500 group-hover:shadow-md transition-all mx-auto mb-4">
-                                                                    <ImageIcon size={24} />
-                                                                </div>
-                                                                <span className="text-xs font-bold text-slate-400 group-hover:text-blue-500 transition-colors block">Cliquez pour ajouter une photo</span>
-                                                                <p className="text-[10px] text-slate-300 mt-2 italic">Format: JPG, PNG, WEBP</p>
-                                                            </div>
-                                                        )}
+                                                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Lien de l'image (URL)</label>
+                                                <input
+                                                    type="url"
+                                                    value={selectedItem?.image || ""}
+                                                    onChange={(e) => setSelectedItem({ ...selectedItem, image: e.target.value })}
+                                                    className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition-all font-medium text-slate-900"
+                                                    placeholder="https://images.unsplash.com/..."
+                                                />
+                                                {selectedItem?.image && (
+                                                    <div className="mt-4 w-full h-40 rounded-2xl overflow-hidden border border-slate-100">
+                                                        <img src={selectedItem.image} className="w-full h-full object-cover" alt="Preview" />
                                                     </div>
-                                                    <input type="file" accept="image/*" onChange={handleImageUpload} className="absolute inset-0 opacity-0 cursor-pointer" />
-                                                </div>
+                                                )}
                                             </div>
 
                                             {activeTab === 'achievements' && (

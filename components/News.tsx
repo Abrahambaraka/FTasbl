@@ -1,8 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Calendar, User, ArrowRight, X, Share2, Tag, Search, Clock, Loader2 } from 'lucide-react';
-import { db } from '../firebase';
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 
 interface NewsProps {
     isFullPage?: boolean;
