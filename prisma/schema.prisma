@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model News {
+  id        String   @id @default(cuid())
+  title     String
+  excerpt   String
+  content   String   @db.Text
+  date      DateTime @default(now())
+  author    String
+  category  String
+  image     String
+  readTime  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Achievement {
+  id        String   @id @default(cuid())
+  title     String
+  desc      String
+  impact    String
+  locations String[]
+  image     String
+  date      String
+  longDesc  String   @db.Text
+  status    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String   @db.Text
+  createdAt DateTime @default(now())
+}

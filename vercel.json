@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "/api/index.js"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ],
+    "installCommand": "npm install && npx prisma generate",
+    "buildCommand": "npm run build"
+}
