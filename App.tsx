@@ -12,6 +12,7 @@ import Admin from './components/Admin';
 import Login from './components/Login';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { Analytics } from "@vercel/analytics/react";
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -73,6 +74,7 @@ const App: React.FC = () => {
         {renderPage()}
       </main>
       <Footer onNavigate={setCurrentPage} />
+      <Analytics />
     </div>
   );
 };
