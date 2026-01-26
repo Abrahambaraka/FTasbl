@@ -22,83 +22,99 @@ const Mission: React.FC<MissionProps> = ({ isFullPage = false }) => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-[24px] shadow-sm border border-slate-100 hover:shadow-xl transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-1.5 h-full bg-[#0056b3]"></div>
-            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-[#0056b3] mb-6 group-hover:scale-110 transition-transform">
-              <Target size={24} />
+        <div className="grid lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Notre Vision",
+              icon: <Target size={28} />,
+              color: "#0056b3",
+              bg: "bg-blue-50",
+              text: "Devenir un acteur de référence dans le Haut-Katanga pour l'éradication de la précarité extrême et la promotion d'une société congolaise résiliente, éduquée et en bonne santé."
+            },
+            {
+              title: "Notre Mission",
+              icon: <HeartHandshake size={28} />,
+              color: "#e31b23",
+              bg: "bg-red-50",
+              text: "Mettre en œuvre des projets communautaires d'accès à l'eau potable, soutenir l'entrepreneuriat des jeunes et protéger les droits des plus vulnérables (veuves, orphelins)."
+            },
+            {
+              title: "Nos Valeurs",
+              icon: <Eye size={28} />,
+              color: "#ffcc00",
+              bg: "bg-yellow-50",
+              text: "L'intégrité dans la gestion de nos ressources, la transparence envers nos partenaires et une solidarité sans faille envers les communautés démunies."
+            }
+          ].map((item, idx) => (
+            <div key={idx} className="bg-white p-8 rounded-[32px] shadow-sm border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-500"></div>
+              <div className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mb-8 relative z-10`} style={{ color: item.color }}>
+                {item.icon}
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4 relative z-10">{item.title}</h3>
+              <p className="text-slate-600 leading-relaxed relative z-10">
+                {item.text}
+              </p>
+              <div className="mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: item.color }}>
+                En savoir plus <span className="text-lg">→</span>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Notre Vision</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Devenir un acteur de référence dans le Haut-Katanga pour l'éradication de la précarité extrême et la promotion d'une société congolaise résiliente, éduquée et en bonne santé.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-[24px] shadow-sm border border-slate-100 hover:shadow-xl transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-1.5 h-full bg-[#e31b23]"></div>
-            <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-[#e31b23] mb-6 group-hover:scale-110 transition-transform">
-              <HeartHandshake size={24} />
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Notre Mission</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Mettre en œuvre des projets communautaires d'accès à l'eau potable, soutenir l'entrepreneuriat des jeunes et protéger les droits des plus vulnérables (veuves, orphelins).
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-[24px] shadow-sm border border-slate-100 hover:shadow-xl transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-1.5 h-full bg-[#ffcc00]"></div>
-            <div className="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center text-[#ffcc00] mb-6 group-hover:scale-110 transition-transform">
-              <Eye size={24} />
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Nos Valeurs</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              L'intégrité dans la gestion de nos ressources, la transparence envers nos partenaires et une solidarité sans faille envers les communautés démunies.
-            </p>
-          </div>
+          ))}
         </div>
 
         {isFullPage && (
-          <div className="mt-16 bg-white rounded-[30px] p-8 shadow-lg border border-slate-100">
-            <div className="grid md:grid-cols-2 gap-10 items-center">
-              <div>
-                <h3 className="text-2xl font-serif font-bold text-slate-900 mb-6">Engagement envers les ODD</h3>
-                <p className="text-base text-slate-600 mb-6 leading-relaxed">
-                  Nos actions s'inscrivent directement dans le cadre des Objectifs de Développement Durable des Nations Unies, avec une priorité sur :
+          <div className="mt-20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <div className="inline-block px-3 py-1 mb-4 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                  Impact Global
+                </div>
+                <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6 italic leading-tight">
+                  Notre Engagement envers les Objectifs de Développement Durable (ODD)
+                </h3>
+                <p className="text-base text-slate-600 mb-8 leading-relaxed max-w-xl">
+                  La Fondation TUSAIDIYANE aligne ses interventions sur l'Agenda 2030 des Nations Unies. Nous concentrons nos ressources sur quatre piliers fondamentaux pour transformer durablement les vies en RDC.
                 </p>
+
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="flex items-center gap-3 text-slate-700 font-bold italic text-sm">
-                    <span className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0">6</span>
-                    Eau & Assainissement
-                  </div>
-                  <div className="flex items-center gap-3 text-slate-700 font-bold italic text-sm">
-                    <span className="w-8 h-8 rounded-lg bg-red-600 text-white flex items-center justify-center shrink-0">1</span>
-                    Pas de Pauvreté
-                  </div>
-                  <div className="flex items-center gap-3 text-slate-700 font-bold italic text-sm">
-                    <span className="w-8 h-8 rounded-lg bg-green-600 text-white flex items-center justify-center shrink-0">3</span>
-                    Bonne Santé
-                  </div>
-                  <div className="flex items-center gap-3 text-slate-700 font-bold italic text-sm">
-                    <span className="w-8 h-8 rounded-lg bg-yellow-600 text-white flex items-center justify-center shrink-0">5</span>
-                    Égalité des Sexes
-                  </div>
+                  {[
+                    { id: '6', label: 'Eau & Assainissement', color: 'bg-blue-600', text: 'Garantir l\'accès à l\'eau potable pour tous.' },
+                    { id: '1', label: 'Pas de Pauvreté', color: 'bg-red-600', text: 'Éliminer la pauvreté sous toutes ses formes.' },
+                    { id: '3', label: 'Bonne Santé', color: 'bg-green-600', text: 'Promouvoir le bien-être à tout âge.' },
+                    { id: '5', label: 'Égalité des Sexes', color: 'bg-orange-500', text: 'Autonomiser les femmes et les filles.' }
+                  ].map((odd) => (
+                    <div key={odd.id} className="p-4 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow group">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className={`w-8 h-8 rounded-lg ${odd.color} text-white flex items-center justify-center font-bold text-sm shrink-0 group-hover:scale-110 transition-transform`}>
+                          {odd.id}
+                        </span>
+                        <span className="font-bold text-slate-900 text-[10px] sm:text-xs md:text-sm">{odd.label}</span>
+                      </div>
+                      <p className="hidden sm:block text-[10px] text-slate-500 leading-snug">{odd.text}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-3 pt-8">
-                  <div className="h-32 bg-slate-100 rounded-2xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=400" className="w-full h-full object-cover" />
+
+              <div className="order-1 lg:order-2 grid grid-cols-2 gap-4">
+                <div className="space-y-4 pt-12">
+                  <div className="group relative rounded-3xl overflow-hidden shadow-lg transform transition-transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=600" alt="Environnement" className="w-full h-48 object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
-                  <div className="h-48 bg-slate-100 rounded-2xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=400" className="w-full h-full object-cover" />
+                  <div className="group relative rounded-3xl overflow-hidden shadow-lg transform transition-transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=600" alt="Education" className="w-full h-64 object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
                 </div>
-                <div className="space-y-3">
-                  <div className="h-48 bg-slate-100 rounded-2xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=400" className="w-full h-full object-cover" />
+                <div className="space-y-4">
+                  <div className="group relative rounded-3xl overflow-hidden shadow-lg transform transition-transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=600" alt="Enfants" className="w-full h-64 object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
-                  <div className="h-32 bg-slate-100 rounded-2xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=400" className="w-full h-full object-cover" />
+                  <div className="group relative rounded-3xl overflow-hidden shadow-lg transform transition-transform hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=600" alt="Santé" className="w-full h-48 object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
                 </div>
               </div>
