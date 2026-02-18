@@ -4,9 +4,10 @@ import { ChevronRight, Users, ShieldCheck, ChevronLeft, ChevronRight as ChevronR
 
 interface HeroProps {
   onNavigate: (page: string) => void;
+  onOpenMembership: () => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
+const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenMembership }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const images = [
     '/slider-1.jpg',
@@ -52,17 +53,17 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
           <div className="flex flex-col sm:flex-row gap-2">
             <button
-              onClick={() => onNavigate('mission')}
+              onClick={onOpenMembership}
               className="bg-[#0056b3] text-white px-5 py-2.5 lg:px-6 lg:py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-200 text-sm"
             >
-              Notre Mission
+              Adhérer à la fondation
               <ChevronRight size={16} />
             </button>
             <button
-              onClick={() => onNavigate('contact')}
+              onClick={() => onNavigate('mission')}
               className="bg-white border-2 border-slate-200 text-slate-700 px-5 py-2.5 lg:px-6 lg:py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:border-[#0056b3] hover:text-[#0056b3] transition-all text-sm"
             >
-              Rejoignez-nous
+              Notre Mission
             </button>
           </div>
 

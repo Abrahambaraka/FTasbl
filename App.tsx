@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 
-
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Mission from './components/Mission';
@@ -12,6 +11,7 @@ import Admin from './components/Admin';
 import Login from './components/Login';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import MembershipModal from './components/MembershipModal';
 import { Analytics } from "@vercel/analytics/react";
 
 const App: React.FC = () => {
@@ -19,6 +19,7 @@ const App: React.FC = () => {
   const [isAdmin, setIsAdmin] = useState<boolean>(() => {
     return localStorage.getItem('is_foundation_admin') === 'true';
   });
+  const [isMembershipOpen, setIsMembershipOpen] = useState(false);
 
   // Gestion du scroll automatique vers le haut lors du changement de page
   useEffect(() => {
@@ -36,6 +37,9 @@ const App: React.FC = () => {
     localStorage.removeItem('is_foundation_admin');
     setCurrentPage('home');
   };
+
+  const openMembership = () => setIsMembershipOpen(true);
+  const closeMembership = () => setIsMembershipOpen(false);
 
   const renderPage = () => {
     switch (currentPage) {
@@ -59,7 +63,7 @@ const App: React.FC = () => {
       default:
         return (
           <>
-            <Hero onNavigate={setCurrentPage} />
+            <Hero onNavigate={setCurrentPage} onOpenMembership={openMembership} />
             <Mission isFullPage={false} />
             <Objectives isFullPage={false} />
           </>
@@ -75,6 +79,7 @@ const App: React.FC = () => {
       </main>
       <Footer onNavigate={setCurrentPage} />
       <Analytics />
+      <MembershipModal isOpen={isMembershipOpen} onClose={closeMembership} />
     </div>
   );
 };
