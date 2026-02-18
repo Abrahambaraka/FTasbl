@@ -219,9 +219,9 @@ const MembershipModal: React.FC<MembershipModalProps> = ({ isOpen, onClose }) =>
               onChange={(e) => setType(e.target.value)}
               className="w-full rounded-xl border border-slate-200 px-3 py-2 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#0056b3] focus:border-transparent"
             >
-              <option value="membre">Membre adhérent</option>
-              <option value="donateur">Donateur / Donatrice</option>
-              <option value="partenaire">Partenaire institutionnel</option>
+              <option value="membre_de_soutien">Membre de soutien</option>
+              <option value="membre_d_honneur">Membre d'honneur</option>
+              <option value="membre_effectif">Membre effectif</option>
             </select>
           </div>
 
