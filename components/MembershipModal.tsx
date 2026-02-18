@@ -122,8 +122,8 @@ const MembershipModal: React.FC<MembershipModalProps> = ({ isOpen, onClose }) =>
   };
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm px-3 sm:px-4">
-      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md sm:max-w-lg lg:max-w-2xl overflow-hidden border border-slate-100 animate-in fade-in slide-in-from-bottom duration-300">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm px-3 sm:px-4 py-4 sm:py-6 overflow-y-auto">
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md sm:max-w-lg lg:max-w-2xl border border-slate-100 animate-in fade-in slide-in-from-bottom duration-300 max-h-[90vh] flex flex-col">
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-slate-50">
           <div className="flex items-center gap-2">
             <div className="w-9 h-9 rounded-2xl bg-blue-100 text-[#0056b3] flex items-center justify-center">
@@ -144,7 +144,7 @@ const MembershipModal: React.FC<MembershipModalProps> = ({ isOpen, onClose }) =>
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="px-5 pt-4 pb-5 space-y-3">
+        <form onSubmit={handleSubmit} className="px-5 pt-4 pb-5 space-y-3 flex-1 overflow-y-auto">
           <p className="text-xs text-slate-600 leading-relaxed bg-slate-50 border border-slate-100 rounded-2xl p-3">
             En adhérant à la Fondation TUSAIDIYANE, vous contribuez de manière concrète à nos actions en faveur
             des populations vulnérables. Un <span className="font-bold text-[#e31b23]">frais symbolique de 1 $</span> est demandé
