@@ -122,8 +122,8 @@ const MembershipModal: React.FC<MembershipModalProps> = ({ isOpen, onClose }) =>
   };
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm px-4">
-      <div className="bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-100 animate-in fade-in slide-in-from-bottom duration-300">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm px-3 sm:px-4">
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md sm:max-w-lg lg:max-w-2xl overflow-hidden border border-slate-100 animate-in fade-in slide-in-from-bottom duration-300">
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-slate-50">
           <div className="flex items-center gap-2">
             <div className="w-9 h-9 rounded-2xl bg-blue-100 text-[#0056b3] flex items-center justify-center">
