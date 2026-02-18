@@ -6,12 +6,19 @@ interface MembershipModalProps {
   onClose: () => void;
 }
 
+const MEMBERSHIP_TYPE_LABELS: Record<string, string> = {
+  membre_fondateur: "Membre fondateur",
+  membre_effectif: "Membre effectif",
+  membre_d_honneur: "Membre d'honneur",
+  membre_bienfaiteur: "Membre bienfaiteur",
+};
+
 const MembershipModal: React.FC<MembershipModalProps> = ({ isOpen, onClose }) => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [city, setCity] = useState('');
-  const [type, setType] = useState('membre');
+  const [type, setType] = useState<keyof typeof MEMBERSHIP_TYPE_LABELS>('membre_fondateur');
   const [message, setMessage] = useState('');
   const [acceptPayment, setAcceptPayment] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -57,7 +64,7 @@ const MembershipModal: React.FC<MembershipModalProps> = ({ isOpen, onClose }) =>
     try {
       const subject = "Demande d'adhésion à la Fondation (frais 1 $)";
       const bodyMessage = [
-        `Type d'adhésion : ${type}`,
+        `Type d'adhésion : ${MEMBERSHIP_TYPE_LABELS[type] || type}`,
         `Téléphone : ${phone}`,
         `Ville / Pays : ${city}`,
         '',
@@ -216,12 +223,13 @@ const MembershipModal: React.FC<MembershipModalProps> = ({ isOpen, onClose }) =>
             </label>
             <select
               value={type}
-              onChange={(e) => setType(e.target.value)}
+              onChange={(e) => setType(e.target.value as keyof typeof MEMBERSHIP_TYPE_LABELS)}
               className="w-full rounded-xl border border-slate-200 px-3 py-2 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#0056b3] focus:border-transparent"
             >
-              <option value="membre_de_soutien">Membre de soutien</option>
-              <option value="membre_d_honneur">Membre d'honneur</option>
+              <option value="membre_fondateur">Membre fondateur</option>
               <option value="membre_effectif">Membre effectif</option>
+              <option value="membre_d_honneur">Membre d'honneur</option>
+              <option value="membre_bienfaiteur">Membre bienfaiteur</option>
             </select>
           </div>
 
