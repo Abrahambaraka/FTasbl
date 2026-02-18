@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Phone, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Instagram, Twitter, Globe } from 'lucide-react';
 import { CONTACT_DATA } from '../constants';
 import Logo from './Logo';
 
@@ -63,6 +63,17 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <div className="flex gap-3">
                 <Mail size={16} className="text-[#ffcc00] shrink-0 mt-1" />
                 <a href={`mailto:${CONTACT_DATA.email}`} className="text-xs text-slate-600 hover:text-[#0056b3] font-bold italic">{CONTACT_DATA.email}</a>
+              </div>
+              <div className="flex gap-3">
+                <Globe size={16} className="text-[#0056b3] shrink-0 mt-1" />
+                <a
+                  href={CONTACT_DATA.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-slate-600 hover:text-[#0056b3] font-bold italic"
+                >
+                  {CONTACT_DATA.website}
+                </a>
               </div>
             </div>
           </div>

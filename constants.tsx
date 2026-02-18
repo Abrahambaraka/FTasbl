@@ -10,9 +10,10 @@ export const COLORS = {
 };
 
 export const CONTACT_DATA = {
-  address: "Numéro 1 (ou 3), Av. Kundelungu, Réf. Paroisse Saint Amand, Commune de la Rwashi, Lubumbashi, RDC",
-  phones: ["+243 848 950 509", "+243 823 716 282"],
-  email: "fondationtusaidiyane@gmail.com"
+  address: "Siège : Lubumbashi, Numéro 67, Av. Kundelungu, Réf. Paroisse Saint Amand, Commune de la Rwashi. Bureau Kinshasa : Avenue Betito Numéro 2, Kinshasa, RDC",
+  phones: ["+243 848 950 509", "+243 823 716 282", "0971957257"],
+  email: "fondationtusaidiyane@gmail.com",
+  website: "https://www.fondationtusaidiyane.com"
 };
 
 export const LogoSVG = ({ className }: { className?: string }) => (
