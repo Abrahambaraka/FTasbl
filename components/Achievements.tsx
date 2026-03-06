@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { MapPin, CheckCircle2, Droplets, HeartPulse, Wallet, Users, ArrowUpRight, X, Calendar, Globe, Loader2 } from 'lucide-react';
+import { API_BASE } from '../constants';
 
 interface AchievementsProps {
   isFullPage?: boolean;
@@ -36,7 +37,7 @@ const Achievements: React.FC<AchievementsProps> = ({ isFullPage = false }) => {
     const fetchAchievements = async () => {
       setLoading(true);
       try {
-        const response = await fetch('/api/achievements');
+        const response = await fetch(`${API_BASE}/api/achievements`);
         if (!response.ok) throw new Error('Failed to fetch achievements');
         const fetched = await response.json();
         setRealizations(fetched);

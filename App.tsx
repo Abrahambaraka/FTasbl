@@ -12,6 +12,7 @@ import Login from './components/Login';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import MembershipModal from './components/MembershipModal';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import { Analytics } from "@vercel/analytics/react";
 
 const App: React.FC = () => {
@@ -20,6 +21,14 @@ const App: React.FC = () => {
     return localStorage.getItem('is_foundation_admin') === 'true';
   });
   const [isMembershipOpen, setIsMembershipOpen] = useState(false);
+
+  useEffect(() => {
+    // Vérifier si l'URL contient ?page=privacy pour Google Play ou accès direct
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('page') === 'privacy') {
+      setCurrentPage('privacy');
+    }
+  }, []);
 
   // Gestion du scroll automatique vers le haut lors du changement de page
   useEffect(() => {
@@ -60,6 +69,8 @@ const App: React.FC = () => {
 
       case 'contact':
         return <Contact isFullPage={true} />;
+      case 'privacy':
+        return <PrivacyPolicy />;
       default:
         return (
           <>

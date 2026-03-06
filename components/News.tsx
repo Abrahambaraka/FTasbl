@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Calendar, User, ArrowRight, X, Share2, Tag, Search, Clock, Loader2 } from 'lucide-react';
+import { API_BASE } from '../constants';
 
 interface NewsProps {
     isFullPage?: boolean;
@@ -30,7 +31,7 @@ const News: React.FC<NewsProps> = ({ isFullPage = false }) => {
         const fetchNews = async () => {
             setLoading(true);
             try {
-                const response = await fetch('/api/news');
+                const response = await fetch(`${API_BASE}/api/news`);
                 if (!response.ok) throw new Error('Failed to fetch news');
                 const fetchedNews = await response.json();
 

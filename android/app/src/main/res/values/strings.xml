@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Fondation TUSAIDIYANE</string>
+    <string name="title_activity_main">Fondation TUSAIDIYANE</string>
+    <string name="package_name">com.fondationtusaidiyane.app</string>
+    <string name="custom_url_scheme">com.fondationtusaidiyane.app</string>
+</resources>

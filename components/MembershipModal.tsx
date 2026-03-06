@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, CreditCard, User, Mail, Phone, MapPin, CheckCircle2, AlertCircle } from 'lucide-react';
+import { API_BASE } from '../constants';
 
 interface MembershipModalProps {
   isOpen: boolean;
@@ -74,7 +75,7 @@ const MembershipModal: React.FC<MembershipModalProps> = ({ isOpen, onClose }) =>
         'Le membre accepte de payer les frais symboliques de 1 $.'
       ].join('\n');
 
-      const response = await fetch('/api/contact', {
+      const response = await fetch(`${API_BASE}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -92,7 +93,7 @@ const MembershipModal: React.FC<MembershipModalProps> = ({ isOpen, onClose }) =>
       }
 
       // Création de la session de paiement via l'API de paiement
-      const payResponse = await fetch('/api/membership-payment', {
+      const payResponse = await fetch(`${API_BASE}/api/membership-payment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

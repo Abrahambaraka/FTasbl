@@ -82,7 +82,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-400 text-[10px] font-medium italic">© 2024 Fondation TUSAIDIYANE (ASBL). Lubumbashi, RDC.</p>
           <div className="flex gap-6 items-center text-[9px] font-bold text-slate-500 uppercase tracking-widest">
-            <a href="#" className="hover:text-[#0056b3] transition-colors">Confidentialité</a>
+            <button onClick={() => onNavigate('privacy')} className="hover:text-[#0056b3] transition-colors">Confidentialité</button>
             <a href="#" className="hover:text-[#0056b3] transition-colors">Statuts</a>
             <button
               onClick={() => onNavigate('admin')}

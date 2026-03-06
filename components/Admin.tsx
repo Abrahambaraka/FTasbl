@@ -6,6 +6,7 @@ import {
     Settings, FileText, Target, Award, Home, Loader2,
     CheckCircle2, Info, Calendar
 } from 'lucide-react';
+import { API_BASE } from '../constants';
 
 
 
@@ -34,7 +35,7 @@ const Admin: React.FC<AdminProps> = ({ onNavigate, onLogout }) => {
     const fetchItems = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`/api/${activeTab}`);
+            const response = await fetch(`${API_BASE}/api/${activeTab}`);
             if (!response.ok) throw new Error('Failed to fetch items');
             const fetchedItems = await response.json();
 
@@ -75,7 +76,7 @@ const Admin: React.FC<AdminProps> = ({ onNavigate, onLogout }) => {
     const handleDelete = async (id: string) => {
         if (confirm("Voulez-vous vraiment supprimer cet élément ? Cette action est irréversible.")) {
             try {
-                const response = await fetch(`/api/${activeTab}/${id}`, {
+                const response = await fetch(`${API_BASE}/api/${activeTab}/${id}`, {
                     method: 'DELETE'
                 });
                 if (!response.ok) throw new Error('Delete failed');
@@ -126,8 +127,8 @@ const Admin: React.FC<AdminProps> = ({ onNavigate, onLogout }) => {
 
         try {
             const url = selectedItem.id
-                ? `/api/${activeTab}/${selectedItem.id}`
-                : `/api/${activeTab}`;
+                ? `${API_BASE}/api/${activeTab}/${selectedItem.id}`
+                : `${API_BASE}/api/${activeTab}`;
 
             const response = await fetch(url, {
                 method: selectedItem.id ? 'PUT' : 'POST',

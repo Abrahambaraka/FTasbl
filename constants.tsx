@@ -9,6 +9,9 @@ export const COLORS = {
   gray: '#f8fafc'
 };
 
+/** Base URL des APIs : vide sur web (même origine), URL du site en app Android (build --mode android) */
+export const API_BASE: string = import.meta.env.VITE_API_BASE_URL ?? '';
+
 export const CONTACT_DATA = {
   address: "Siège : Lubumbashi, Numéro 67, Av. Kundelungu, Réf. Paroisse Saint Amand, Commune de la Rwashi. Bureau Kinshasa : Avenue Betito Numéro 2, Kinshasa, RDC",
   phones: ["+243 848 950 509", "+243 823 716 282", "0971957257"],
